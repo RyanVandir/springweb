@@ -3,12 +3,11 @@ package com.cursojava.Projeto.web.spring.adapter.in.request;
 import lombok.Data;
 import lombok.ToString;
 
+import java.time.Instant;
+
 @Data
 @ToString
-public class UserRequest {
+public class OrderRequest {
     private String id;
-    private String name;
-    private String email;
-    private String password;
-    private String phone;
+    private Instant moment;
 }
