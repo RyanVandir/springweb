@@ -27,4 +27,9 @@ public class UserController {
     public List<UserRequest> findAll() {
         return userCorePort.findAll();
     }
+
+    @GetMapping("/{id}")
+    public UserRequest findById(@PathVariable String id) {
+        return userCorePort.findById(id);
+    }
 }

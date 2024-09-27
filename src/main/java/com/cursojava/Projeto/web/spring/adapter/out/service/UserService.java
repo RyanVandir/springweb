@@ -9,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -25,5 +26,11 @@ public class UserService implements UserServicePort {
     @Override
     public UserModel createdUser(UserEntity userEntity) {
         return userMapper.toModel(userRepository.save(userEntity));
+    }
+
+    @Override
+    public UserModel findById(String id) {
+        Optional<UserEntity> userEntity = userRepository.findById(id);
+        return userMapper.toModel(userEntity.get());
     }
 }

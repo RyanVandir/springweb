@@ -27,4 +27,10 @@ public class UserCore implements UserCorePort {
         UserModel result = userServicePort.createdUser(userMapper.toEntity(userModel));
         return userMapper.toRequest(result);
     }
+
+    @Override
+    public UserRequest findById(String id) {
+        UserModel userModel = userServicePort.findById(id);
+        return userMapper.toRequest(userModel);
+    }
 }

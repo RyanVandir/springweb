@@ -8,5 +8,8 @@ import java.util.List;
 public interface UserServicePort {
 
     List<UserModel> findAll();
+
     UserModel createdUser(UserEntity userEntity);
+
+    UserModel findById(String id);
 }
