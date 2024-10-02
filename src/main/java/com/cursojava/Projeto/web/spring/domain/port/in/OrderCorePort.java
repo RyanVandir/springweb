@@ -9,7 +9,7 @@ public interface OrderCorePort {
 
     List<OrderRequest> findAll();
 
-    OrderRequest createdUser(OrderModel orderModel);
+    OrderRequest createdUser(OrderModel orderModel, String idUser);
 
     OrderRequest findById(String id);
 }

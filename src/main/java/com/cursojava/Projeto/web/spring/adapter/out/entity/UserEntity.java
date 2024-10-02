@@ -1,9 +1,7 @@
 package com.cursojava.Projeto.web.spring.adapter.out.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.ArrayList;
@@ -24,6 +22,7 @@ public class UserEntity {
     private String phone;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "client")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "client", cascade = CascadeType.ALL)
     private List<OrderEntity> orders = new ArrayList<>();
+
 }

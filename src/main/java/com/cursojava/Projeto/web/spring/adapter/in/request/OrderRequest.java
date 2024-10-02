@@ -10,4 +10,5 @@ import java.time.Instant;
 public class OrderRequest {
     private String id;
     private Instant moment;
+    private UserRequest client;
 }

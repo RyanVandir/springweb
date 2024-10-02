@@ -17,9 +17,9 @@ public class OrderController {
     private final OrderCorePort orderCorePort;
     private final OrderMapper orderMapper;
 
-    @PostMapping
-    public ResponseEntity<OrderRequest> createdUser(@RequestBody OrderRequest orderRequest) {
-        OrderRequest response = orderCorePort.createdUser(orderMapper.toModel(orderRequest));
+    @PostMapping("{idUser}")
+    public ResponseEntity<OrderRequest> createdUser(@RequestBody OrderRequest orderRequest, @PathVariable String idUser) {
+        OrderRequest response = orderCorePort.createdUser(orderMapper.toModel(orderRequest), idUser);
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 

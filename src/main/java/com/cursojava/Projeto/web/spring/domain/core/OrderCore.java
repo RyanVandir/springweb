@@ -5,7 +5,9 @@ import com.cursojava.Projeto.web.spring.adapter.out.entity.OrderEntity;
 import com.cursojava.Projeto.web.spring.domain.mapper.OrderMapper;
 import com.cursojava.Projeto.web.spring.domain.model.OrderModel;
 import com.cursojava.Projeto.web.spring.domain.port.in.OrderCorePort;
+import com.cursojava.Projeto.web.spring.domain.port.in.UserCorePort;
 import com.cursojava.Projeto.web.spring.domain.port.out.OrderServicePort;
+import com.cursojava.Projeto.web.spring.domain.port.out.UserServicePort;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -17,6 +19,7 @@ import java.util.Optional;
 public class OrderCore implements OrderCorePort {
     private final OrderServicePort orderServicePort;
     private final OrderMapper orderMapper;
+    private final UserServicePort userServicePort;
 
     @Override
     public List<OrderRequest> findAll() {
@@ -25,7 +28,8 @@ public class OrderCore implements OrderCorePort {
     }
 
     @Override
-    public OrderRequest createdUser(OrderModel orderModel) {
+    public OrderRequest createdUser(OrderModel orderModel, String idUser) {
+        orderModel.setClient(userServicePort.findById(idUser));
         OrderModel result = orderServicePort.createdUser(orderMapper.toEntity(orderModel));
         return orderMapper.toRequest(result);
     }
