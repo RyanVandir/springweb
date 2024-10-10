@@ -17,7 +17,7 @@ public class ProductController {
     private final ProductMapper productMapper;
     private final ProductCorePort productCorePort;
 
-    @PostMapping
+    @PostMapping("{idCategory}")
     public ResponseEntity<ProductRequest> createdProduct(@RequestBody ProductRequest productRequest) {
         ProductRequest response = productCorePort.createdProduct(productMapper.toModel(productRequest));
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
